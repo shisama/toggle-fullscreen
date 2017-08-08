@@ -1,0 +1,23 @@
+{
+  "name": "toggle-fullscreen",
+  "version": "0.1.0",
+  "description": "Simple to use Fullscreen API with Promise for cross-browser.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shisama/toggle-fullscreen.git"
+  },
+  "keywords": [
+    "fullscreen",
+    "promise"
+  ],
+  "author": "Masashi Hirano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shisama/toggle-fullscreen/issues"
+  },
+  "homepage": "https://github.com/shisama/toggle-fullscreen#readme"
+}
