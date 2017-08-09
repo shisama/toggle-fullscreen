@@ -14,7 +14,7 @@
     "fullscreen",
     "promise"
   ],
-  "author": "Masashi Hirano",
+  "author": "Masashi Hirano (https://github.com/shisama)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/shisama/toggle-fullscreen/issues"

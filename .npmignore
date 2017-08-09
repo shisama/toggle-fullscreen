@@ -59,4 +59,10 @@ typings/
 # dotenv environment variables file
 .env
 
+# git
+.gitignore
 
+# IntelliJ project files
+.idea
+*.iml
+out
