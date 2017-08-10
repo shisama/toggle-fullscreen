@@ -37,7 +37,7 @@ onChangeFullScreen = async () => {
     // any process in fullscreen mode
     // e.g.document.addEventListener('keydown', this.keydownEvent);
   } else {
-    // any process in fullscreen mode
+    // any process in non-fullscreen mode
     // e.g.document.removeEventListener('keydown', this.keydownEvent);
   }
 };
