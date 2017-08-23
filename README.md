@@ -43,11 +43,27 @@ onChangeFullScreen = async () => {
 };
 ```
 
+For callback (use if something is wrong with Promise) :
+```js
+ onChangeFullScreen = function() {
+   const element = document.getElementById('something');
+   toggleFullscreen(element, function(isFullScreen) {
+     if (isFullScreen) {
+       // any process in fullscreen mode
+       // e.g.document.addEventListener('keydown', this.keydownEvent);
+     } else {
+       // any process in non-fullscreen mode
+       // e.g.document.removeEventListener('keydown', this.keydownEvent);
+     }
+   });
+ };
+```
 ## Support
 - Chrome@latest
 - Firefox@latest
 - Safari@latest
 - MSEdge@latest
+- IE11
 
 ## License
 This project is licensed under the terms of the

@@ -1,6 +1,6 @@
 {
   "name": "toggle-fullscreen",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simple to use Fullscreen API with Promise for cross-browser.",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/shisama/toggle-fullscreen/issues"
   },
-  "homepage": "https://github.com/shisama/toggle-fullscreen#readme"
+  "homepage": "https://github.com/shisama/toggle-fullscreen#readme",
+  "dependencies": {
+    "es6-promise": "^4.1.1"
+  }
 }
