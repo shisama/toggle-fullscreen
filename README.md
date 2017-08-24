@@ -14,6 +14,7 @@ npm install --save toggle-fullscreen
 
 ## Usage
 ```js
+const toggleFullscreen = require('toggle-fullscreen');
 onChangeFullScreen = function() {
   const element = document.getElementById('something');
   toggleFullscreen(element).then(function(isFullScreen) {
@@ -30,6 +31,7 @@ onChangeFullScreen = function() {
 
 For async/await:
 ```js
+const toggleFullscreen = require('toggle-fullscreen');
 onChangeFullScreen = async () => {
   const element = document.getElementById('something');
   const isFullScreen = await toggleFullscreen(element);
@@ -45,18 +47,19 @@ onChangeFullScreen = async () => {
 
 For callback (use if something is wrong with Promise) :
 ```js
- onChangeFullScreen = function() {
-   const element = document.getElementById('something');
-   toggleFullscreen(element, function(isFullScreen) {
-     if (isFullScreen) {
-       // any process in fullscreen mode
-       // e.g.document.addEventListener('keydown', this.keydownEvent);
-     } else {
-       // any process in non-fullscreen mode
-       // e.g.document.removeEventListener('keydown', this.keydownEvent);
-     }
-   });
- };
+const toggleFullscreen = require('toggle-fullscreen');
+onChangeFullScreen = function() {
+  const element = document.getElementById('something');
+  toggleFullscreen(element, function(isFullScreen) {
+    if (isFullScreen) {
+      // any process in fullscreen mode
+      // e.g.document.addEventListener('keydown', this.keydownEvent);
+    } else {
+      // any process in non-fullscreen mode
+      // e.g.document.removeEventListener('keydown', this.keydownEvent);
+    }
+  });
+};
 ```
 ## Support
 - Chrome@latest
