@@ -13,35 +13,59 @@ npm install --save toggle-fullscreen
 ```
 
 ## Usage
-```js
-const toggleFullscreen = require('toggle-fullscreen');
+```jsx harmony
+import toggleFullscreen, {
+  fullscreenChange,
+  isFullscreen,
+} from 'toggle-fullscreen';
+
 onChangeFullScreen = function() {
   const element = document.getElementById('something');
-  toggleFullscreen(element).then(function(isFullScreen) {
-    if (isFullScreen) {
-      // any process in fullscreen mode
-      // e.g.document.addEventListener('keydown', this.keydownEvent);
-    } else {
-      // any process in non-fullscreen mode
-      // e.g.document.removeEventListener('keydown', this.keydownEvent);
-    }
-  });
+  toggleFullscreen(element)
+    .then(() => {
+      return fullscreenChange(() => {
+        const isFullScreen = isFullscreen();
+        if (isFullScreen) {
+          // any process in fullscreen mode
+          // e.g.document.addEventListener('keydown', keydownFunction);
+        } else {
+          // any process in non-fullscreen mode
+          // e.g.document.removeEventListener('keydown', keydownFunction);
+        }
+      });
+    })
+    .then(() => {
+      console.log('successed!');
+    })
+    .catch(() => {
+      console.log('failed!');
+    });
 };
 ```
 
 For async/await:
-```js
-const toggleFullscreen = require('toggle-fullscreen');
+```jsx harmony
+import toggleFullscreen, {
+  fullscreenChange,
+  isFullscreen,
+} from 'toggle-fullscreen';
+
 onChangeFullScreen = async () => {
   const element = document.getElementById('something');
-  const isFullScreen = await toggleFullscreen(element);
-  if (isFullScreen) {
-    // any process in fullscreen mode
-    // e.g.document.addEventListener('keydown', this.keydownEvent);
-  } else {
-    // any process in non-fullscreen mode
-    // e.g.document.removeEventListener('keydown', this.keydownEvent);
-  }
+  await toggleFullscreen(element);
+  await fullscreenChange(() => {
+    const isFullScreen = isFullscreen();
+    if (isFullScreen) {
+      // any process in fullscreen mode
+      // e.g.document.addEventListener('keydown', keydownFunction);
+    } else {
+      // any process in non-fullscreen mode
+      // e.g.document.removeEventListener('keydown', keydownFunction);
+    }
+  }).catch(() => {
+    console.log('failed!');
+  });
+  console.log('successed!');
 };
 ```
 
