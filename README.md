@@ -12,14 +12,59 @@ Simple to use [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/
 npm install --save toggle-fullscreen
 ```
 
-## Usage
+## API
+### toggleFullscreen(target) ⇒ <code>Promise<></code>
+Requests Fullscreen API.
+Request to exit fullscreen mode if target is already fullscreen.
+ 
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| target  | <code>Element</code> | target element to change fullscreen|
+
+Usage:
+```js
+var target = document.querySelector('#target');
+toggleFullscreen(target);
+```
+For jQuery:
+```js
+$('#target').on('click', event => {
+	toggleFullscreen(event.target);
+});
+```
+
+### fullscreenChange(callback) ⇒ <code>Promise<></code>
+Add a listener for when the browser switches in and out of fullscreen. 
+ 
+| Param  | Type                | Description  |
+| ------ | ------------------- | ------------ |
+| callback  | <code>function</code> | function to be called when the browser switches in and out of fullscreen|
+
+Usage:
+```
+fullscreenChange(function() {
+  console.log('switch fullscree');
+}
+```
+### isFullscreen() ⇒ <code>Boolean</code>
+Check whether fullscreen is active.
+Usage:
+```js
+if (isFullscreen()) {
+  console.log('fullscreen is active');
+} else {
+  console.log('fullscreen is not active');
+} 
+```
+
+## Example
 ```jsx harmony
 import toggleFullscreen, {
   fullscreenChange,
   isFullscreen,
 } from 'toggle-fullscreen';
 
-onChangeFullScreen = function() {
+onChangeFullScreen = () => {
   const element = document.getElementById('something');
   toggleFullscreen(element)
     .then(() => {
@@ -43,6 +88,34 @@ onChangeFullScreen = function() {
 };
 ```
 
+Or use Promise.all()
+
+```jsx harmony
+import toggleFullscreen, {
+  fullscreenChange,
+  isFullscreen,
+} from 'toggle-fullscreen';
+
+onChangeFullScreen = () => {
+  // target element
+  const element = document.getElementById('something');
+  // callback function when fullscreen change is detected.
+  const callback = () => {
+    const isFullScreen = isFullscreen();
+    this.setState({isFullScreen: isFullScreen});
+    if (isFullScreen) {
+      document.addEventListener('keydown', this.keydownEvent);
+      element.style.width = '70%';
+    } else {
+      document.removeEventListener('keydown', this.keydownEvent);
+      element.style.width = '100%';
+    }
+  };
+  // execute toggle-fullscreen and add listener when fullscreen change detected asynchronously
+  Promise.all([toggleFullscreen(element), fullscreenChange(callback)]);
+};
+```
+
 For async/await:
 ```jsx harmony
 import toggleFullscreen, {
@@ -62,8 +135,6 @@ onChangeFullScreen = async () => {
       // any process in non-fullscreen mode
       // e.g.document.removeEventListener('keydown', keydownFunction);
     }
-  }).catch(() => {
-    console.log('failed!');
   });
   console.log('successed!');
 };
