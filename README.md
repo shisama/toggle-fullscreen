@@ -43,8 +43,8 @@ Add a listener for when the browser switches in and out of fullscreen.
 Usage:
 ```
 fullscreenChange(function() {
-  console.log('switch fullscree');
-}
+  console.log('switch fullscreen');
+});
 ```
 ### isFullscreen() ⇒ <code>Boolean</code>
 Check whether fullscreen is active.
