@@ -1,7 +1,7 @@
 {
   "name": "toggle-fullscreen",
   "version": "0.3.3",
-  "description": "Simple to use Fullscreen API with Promise for cross-browser.",
+  "description": "Promise based Fullscreen API for cross-browser.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

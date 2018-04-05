@@ -1,11 +1,17 @@
 toggle-fullscreen
 ===
-Simple to use [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API) with [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) for cross-browser.
+[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) based [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API) for cross-browser.
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/shisama/toggle-fullscreen/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/dt/toggle-fullscreen.svg)](https://www.npmjs.com/package/toggle-fullscreen)
 
-## [Demo](https://shisama.github.io/react-slideshow-ui/demo/)(via [react-slideshow-ui](https://www.npmjs.com/package/react-slideshow-ui))
+```js
+async function() {
+  const element = document.querySelector('some element');
+  await toggleFullscreen(element);
+  await otherFunc();
+}
+```
 
 ## Install
 ```
