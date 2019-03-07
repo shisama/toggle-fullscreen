@@ -37,25 +37,34 @@ export default function toggleFullscreen(element: Element, callback?: Function) 
    * @param {Element} element
    */
   function enterFullscreen(element: Element) {
-    const requestFullscreen =
-      element.requestFullscreen ||
-      (element as any).msRequestFullscreen ||
-      (element as any).parentElement.mozRequestFullScreen ||
-      (element as any).webkitRequestFullscreen ||
-      (element as any).parentElement.webkitRequestFullscreen;
-    requestFullscreen();
+    var userAgent = navigator.userAgent.toLowerCase();
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if ((element as any).msRequestFullscreen) {
+      (element as any).msRequestFullscreen();
+    } else if ((element as any).mozRequestFullScreen) {
+      (element as any).parentElement.mozRequestFullScreen();
+    } else if (userAgent.indexOf('edge') != -1) {
+      (element as any).parentElement.webkitRequestFullscreen();
+    } else if ((element as any).webkitRequestFullscreen) {
+      (element as any).webkitRequestFullscreen();
+    }
   }
 
   /**
    * exit fullscreen mode.
    */
   function exitFullscreen() {
-    const exitFullscreen =
-      document.exitFullscreen ||
-      (document as any).msExitFullscreen ||
-      (document as any).mozCancelFullScreen ||
-      (document as any).webkitExitFullscreen;
-    exitFullscreen();
+    const _doument: any = document;
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (_doument.msExitFullscreen) {
+      _doument.msExitFullscreen();
+    } else if (_doument.mozCancelFullScreen) {
+      _doument.mozCancelFullScreen();
+    } else if (_doument.webkitExitFullscreen) {
+      _doument.webkitExitFullscreen();
+    }
   }
 }
 
