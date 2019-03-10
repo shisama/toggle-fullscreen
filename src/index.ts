@@ -1,5 +1,4 @@
-import {polyfill} from 'es6-promise';
-polyfill();
+import 'es6-promise/auto';
 
 /**
  * switch target DOMElement to fullscreen mode.

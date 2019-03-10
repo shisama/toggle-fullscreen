@@ -1,3 +1,4 @@
+import 'es6-promise/auto';
 /**
  * switch target DOMElement to fullscreen mode.
  * @param element {Element} DOMElement that you want to make fullscreen.
