@@ -1,6 +1,6 @@
 {
   "name": "toggle-fullscreen",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Promise based Fullscreen API for cross-browser.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
