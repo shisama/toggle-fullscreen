@@ -4,7 +4,7 @@ import 'es6-promise/auto';
  * switch target DOMElement to fullscreen mode.
  * @param element {Element} DOMElement that you want to make fullscreen.
  */
-export default function toggleFullscreen(element: Element, callback?: Function) {
+export default function toggleFullscreen(element: Element, callback?: Function): Promise<any> {
   if (callback && typeof callback === 'function') {
     if (!isFullscreen()) {
       const fn: EventListenerOrEventListenerObject =  (e: Event) => {
@@ -20,7 +20,7 @@ export default function toggleFullscreen(element: Element, callback?: Function) 
       exitFullscreen();
       callback(false);
     }
-    return null;
+    return Promise.resolve();
   }
   return new Promise((resolve: () => any) => {
     if (!isFullscreen()) {
@@ -35,7 +35,7 @@ export default function toggleFullscreen(element: Element, callback?: Function) 
    * enter fullscreen mode.
    * @param {Element} element
    */
-  function enterFullscreen(element: Element) {
+  function enterFullscreen(element: Element): void {
     var userAgent = navigator.userAgent.toLowerCase();
     if (element.requestFullscreen) {
       element.requestFullscreen();
@@ -53,7 +53,7 @@ export default function toggleFullscreen(element: Element, callback?: Function) 
   /**
    * exit fullscreen mode.
    */
-  function exitFullscreen() {
+  function exitFullscreen(): void {
     const _doument: any = document;
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -71,7 +71,7 @@ export default function toggleFullscreen(element: Element, callback?: Function) 
  * check if fullscreen or not.
  * @returns {boolean}
  */
-export function isFullscreen() {
+export function isFullscreen(): boolean {
   const _document: any = document;
   if (
     !_document.fullscreenElement &&
@@ -89,7 +89,7 @@ export function isFullscreen() {
  * @param callback
  * @return {Promise}
  */
-export function fullscreenChange(callback: EventListenerOrEventListenerObject) {
+export function fullscreenChange(callback: EventListenerOrEventListenerObject): Promise<any> {
   const _document: any = document;
   return new Promise(function (resolve, reject) {
     if (document.fullscreenEnabled) {
